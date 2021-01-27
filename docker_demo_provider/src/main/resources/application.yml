@@ -1,0 +1,81 @@
+server:
+  port: 8080
+
+### mysql datasource config
+spring:
+  application:
+    name: docker_demo_provider
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/cdt01?zeroDateTimeBehavior=convertToNull&useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+    ### hikari datasource config
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 15
+      auto-commit: true
+      idle-timeout: 30000
+      pool-name: DatebookHikariCP
+      max-lifetime: 1765000
+      connection-timeout: 30000
+      connection-test-query: SELECT 1
+
+  redis:
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
+        max-wait: -1
+    host: 127.0.0.1
+    port: 6379
+
+
+
+
+
+
+  rabbitmq:
+    addresses: 127.0.0.1:5672
+    publisher-returns: true
+    publisher-confirm-type: SIMPLE
+    connection-timeout: 1500
+    listener:
+      simple:
+        retry:
+          max-attempts: 3
+          max-interval: 2000
+          enabled: true
+        default-requeue-rejected: true
+    username: guest
+    password: guest
+dubbo:
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    timeout: 10000
+  scan:
+    base-packages: org.dataochen.facade
+  protocol:
+    port: 20881
+    name: dubbo
+  provider:
+    threads: 300
+    loadbalance: roundrobin
+    timeout: 8000
+    version: 1.0
+  consumer:
+    loadbalance: roundrobin
+    timeout: 3000
+    retries: 0
+  application:
+    id: docker_demo_provider
+# mybatis start
+
+# 注意：一定要对应mapper映射xml文件的所在路径
+mybatis:
+  mapper-locations: classpath:mapping/*.xml
+  mybatis:
+    type-aliases-package: org.dataochen.entity
+# mybatis end

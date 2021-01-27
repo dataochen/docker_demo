@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="mysql" targetRuntime="MyBatis3">
+        <!-- 生成的 Java 文件的编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 格式化 Java 代码 -->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!-- 格式化 XML 代码 -->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+
+        <!-- 引入lombok，去掉setter/getter-->
+        <plugin type="org.dataochen.dbtool.plugin.LombokPlugin">
+            <property name="hasLombok" value="true"/>
+        </plugin>
+
+        <!-- 每次生成时自动覆盖xml -->
+        <plugin type="org.dataochen.dbtool.plugin.OverIsMergeablePlugin" />
+
+        <!-- 自定义注释生成器 -->
+        <commentGenerator type="org.dataochen.dbtool.generator.MySQLCommentGenerator">
+            <property name="author" value="demo"/>
+            <property name="dateFormat" value="yyyy/MM/dd"/>
+        </commentGenerator>
+
+        <!-- 配置数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/cdt01?serverTimezone=Asia/Shanghai"
+                        userId="root" password="123456">
+            <!-- 设置 useInformationSchema 属性为 true -->
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+        <!-- 生成实体的位置 -->
+        <javaModelGenerator targetPackage="org.dataochen.entity" targetProject="docker_demo_provider/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成 Mapper XML 的位置 -->
+        <sqlMapGenerator targetPackage="mapping" targetProject="docker_demo_provider/src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- 生成 Mapper 接口的位置 -->
+        <javaClientGenerator targetPackage="org.dataochen.mapper" type="XMLMAPPER" targetProject="docker_demo_provider/src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--&lt;!&ndash; 生成实体的位置 &ndash;&gt;-->
+        <!--<javaModelGenerator targetPackage="entity" targetProject="pojo">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</javaModelGenerator>-->
+
+        <!--&lt;!&ndash; 生成 Mapper XML 的位置 &ndash;&gt;-->
+        <!--<sqlMapGenerator targetPackage="mapping" targetProject="src/test/resources">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</sqlMapGenerator>-->
+
+        <!--&lt;!&ndash; 生成 Mapper 接口的位置 &ndash;&gt;-->
+        <!--<javaClientGenerator targetPackage="pojo.mapper" type="XMLMAPPER" targetProject="src/test/java">-->
+            <!--<property name="enableSubPackages" value="true"/>-->
+        <!--</javaClientGenerator>-->
+
+        <table tableName="demo" domainObjectName="Demo"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="true" selectByExampleQueryId="true">
+            <!-- domainName去掉前缀-->
+            <!--<domainObjectRenamingRule searchString="Via" replaceString=""/>-->
+        </table>
+
+    </context>
+
+</generatorConfiguration>

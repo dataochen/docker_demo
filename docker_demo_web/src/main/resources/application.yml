@@ -1,0 +1,23 @@
+server:
+  port: 8081
+
+dubbo:
+  registry:
+    address: zookeeper://127.0.0.1:2181
+    timeout: 10000
+  scan:
+    base-packages: org.dataochen.service
+  protocol:
+    port: 20882
+    name: dubbo
+  provider:
+    threads: 300
+    loadbalance: roundrobin
+    timeout: 8000
+    version: 1.0
+  consumer:
+    loadbalance: roundrobin
+    timeout: 3000
+    retries: 0
+  application:
+    id: docker_demo_web
