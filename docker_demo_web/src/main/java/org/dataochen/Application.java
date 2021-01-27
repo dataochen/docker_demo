@@ -2,6 +2,7 @@ package org.dataochen;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 import java.util.concurrent.CountDownLatch;
 
@@ -11,7 +12,7 @@ import java.util.concurrent.CountDownLatch;
  * @date: 2021/1/26 16:17
  */
 @SpringBootApplication(scanBasePackages = {"org.dataochen"})
-public class Application  {
+public class Application   extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
         CountDownLatch countDownLatch = new CountDownLatch(1);

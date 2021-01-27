@@ -4,6 +4,7 @@ import org.apache.dubbo.config.spring.context.annotation.EnableDubbo;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /**
  * @author dataochen
@@ -13,7 +14,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan(basePackages = {"org.dataochen.mapper"})
 @SpringBootApplication(scanBasePackages = {"org.dataochen"})
 @EnableDubbo
-public class Application  {
+public class Application  extends SpringBootServletInitializer{
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
