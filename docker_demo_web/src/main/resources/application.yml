@@ -21,3 +21,18 @@ dubbo:
     retries: 0
   application:
     id: docker_demo_web
+spring:
+  rabbitmq:
+    addresses: 172.18.0.8:5672
+    publisher-returns: true
+    publisher-confirm-type: SIMPLE
+    connection-timeout: 1500
+    listener:
+      simple:
+        retry:
+          max-attempts: 3
+          max-interval: 2000
+          enabled: true
+        default-requeue-rejected: true
+    username: guest
+    password: guest
