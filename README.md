@@ -21,7 +21,7 @@ nginx: nginx:latest 使用最新的
 tomcat: dataochen/tomcat8 自定义的tomcat，用来发布业务服务，支持jdk8,远程部署
 
 网络架构图：
-![image](https://github.com/dataochen/docker_demo/doc/分布式网络架构.png)
+![image](https://github.com/dataochen/docker_demo/blob/main/doc/%E5%88%86%E5%B8%83%E5%BC%8F%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84.png)
 
 #自定义网络段
 
