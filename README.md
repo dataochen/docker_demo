@@ -1,16 +1,16 @@
-# docker_demo
+# docker_demo  
 集成dubbo,redis,rabbitmq,mysql中间件的分布式架构
 
 用于docker例子中
 
-#概要设计：
-1.搭建zk,redis,mysql,rabbitmq,dubbo-admin,jenkins,nginx中间件服务
-2.俩台业务服务器A和B,A负责提供dubbo接口包括数据库操作，redis操作，发送mq，B负责调用dubbo接口并保留http接口和消费MQ
-3.使用nginx作为网关层，暴露B服务的http接口
-4.后台有dubbo后台，jenkins后台，rabbitmq后台；账号密码统一为root
+#概要设计：  
+1.搭建zk,redis,mysql,rabbitmq,dubbo-admin,jenkins,nginx中间件服务  
+2.俩台业务服务器A和B,A负责提供dubbo接口包括数据库操作，redis操作，发送mq，B负责调用dubbo接口并保留http接口和消费MQ  
+3.使用nginx作为网关层，暴露B服务的http接口  
+4.后台有dubbo后台，jenkins后台，rabbitmq后台；账号密码统一为root  
 
-#详细设计：
-实验镜像选择如下：
+#详细设计：  
+实验镜像选择如下：  
 mysql: mysql:latest 数据库 使用最新的  
 redis: redis:latest 缓存redis 使用最新的  
 zookeeper: zookeeper:latest 使用最新的  
@@ -20,8 +20,9 @@ jenkins: jenkins:latest 使用最新的
 nginx: nginx:latest 使用最新的  
 tomcat: dataochen/tomcat8 自定义的tomcat，用来发布业务服务，支持jdk8,远程部署,指定远程操作的用户名和密码
 
-#网络架构图：
-![image](https://github.com/dataochen/docker_demo/blob/main/doc/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84.png)
+
+#网络架构图：  
+![image](https://github.com/dataochen/docker_demo/blob/main/doc/%E5%88%86%E5%B8%83%E5%BC%8F%E6%9C%8D%E5%8A%A1%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84.png)  
 
 #实施步骤：
 1.自定义网络段  
