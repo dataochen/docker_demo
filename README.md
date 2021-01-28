@@ -16,7 +16,7 @@ redis: redis:latest 缓存redis 使用最新的
 zookeeper: zookeeper:latest 使用最新的  
 rabbitmq: rabbitmq:3.8.11-management  默认版本是不支持后台的，此版本支持rabbitmq后台  
 dubbo-admin: chenchuxin/dubbo-admin:latest dubbo服务治理后台 使用最新版本   
-jenkins: jenkins:latest 使用最新的  
+jenkins: jenkinsci/blueocean:latest 官方推荐使用镜像，使用最新的  
 nginx: nginx:latest 使用最新的  
 tomcat: dataochen/tomcat8 自定义的tomcat，用来发布业务服务，支持jdk8,远程部署,指定远程操作的用户名和密码
 
